@@ -1,26 +1,35 @@
 #include<stdio.h>
-  int main()
+int binarySearch( int arr[], int n,int k);
+int main()
+{
+    int n,target;
+   scanf("%d %d",&n,&target);
+   int arr[n];
+   for(int i=0; i<n; i++)
+   {
+       scanf("%d",&arr[i]);
+   }
+   int m = binarySearch(arr,n,target);
+   if(m !=-1)  printf("%d is found at index = %d",target,m);
+    else  printf("%d is not found",target);
+
+
+}
+  int binarySearch( int array[], int n,int k)
   {
-      int a[]={1,2,3,4,5,6,7,8,9,10};
-      int left=0,right=9,mid,num;
-      printf("enter test number:");
-      scanf("%d",&num);
-      while(left<=right)
+      int l=0,r=n-1,m;
+      while(l<r)
       {
-          mid=(left+right)/2;
-          if(num==a[mid])
+          m=(l+r)/2;
+          if(k==array[m])
           {
-              printf("number is found at position : %d\n",mid);
-              return 0;
+              return m;
           }
-          else if(num<a[mid])
+          else if(k<array[m])
           {
-              right=mid-1;
+              r=m-1;
           }
-          else if(num>a[mid])
-          {
-              left=mid+1;
-          }
+          else l=m+1;
       }
-      printf("number is not found\n");
+     return -1;
   }

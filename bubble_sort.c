@@ -1,23 +1,38 @@
 #include<stdio.h>
+
+int bubbleSort( int arr[], int n);
 int main()
 {
-    int arr[]={8,7,6,5,4,3,2,1};
-    int i,j,temp,size=8;
-    for(i=0; i<size-1 ;i++)
+    int n;
+   scanf("%d",&n);
+   int arr[n];
+   for(int i=0; i<n; i++)
+   {
+       scanf("%d",&arr[i]);
+   }
+   int *array = bubbleSort(arr, n);
+
+        //bubbleSort(arr, n);
+
+   for(int i=0; i<n; i++)
+   {
+       printf("%d ",array[i]);
+       //printf("%d ",arr[i]);
+   }
+}
+int bubbleSort( int arr[], int n)
+{
+    for(int i=0; i<n-1; i++)
     {
-        for(j=0; j<size-1-i; j++)
+        for(int j=0; j<n-1-i; j++)
         {
             if(arr[j]>arr[j+1])
             {
-                temp=arr[j];
+               int temp=arr[j];
                 arr[j]=arr[j+1];
                 arr[j+1]=temp;
             }
         }
     }
-    printf("\n\n After sorting the Arry:\n");
-    for(i=0; i<size; i++)
-    {
-        printf("%d ",arr[i]);
-    }
+    return arr;
 }
